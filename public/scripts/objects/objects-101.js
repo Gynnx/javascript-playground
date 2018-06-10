@@ -25,3 +25,5 @@ person.age = parseInt(person.age) + 1;
 
 
 console.log(`${person.name} is ${person.age} lives in ${person.location}`);
+
+//Object refe
