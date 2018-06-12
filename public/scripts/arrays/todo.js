@@ -13,14 +13,13 @@ const todoList = [{
 }];
 
 const deleteTodo = (todos, findToDo)=>{
-    return (todos.splice(todos.findIndex((todo, index)=>todo.task.toLowerCase() === findToDo.toLowerCase()),1)
-        );
-
-}
+    const index = todos.findIndex((todo)=>todo.task.toLowerCase() === findToDo.toLowerCase());
+    return index > -1 ? todos.splice(index,1): 'task not found in todo list';
+};
 console.log(`Original todo list:`);
 console.log(todoList);
 
-console.log(deleteTodo(todoList,'feed Natalya'));
+console.log('Deleted:', deleteTodo(todoList,'feed Natalya'));
 console.log(`Updated to do list:`);
 console.log(todoList);
 
