@@ -1,6 +1,16 @@
-const notes = ['Note 1', 'Note 2', 'Note 3'];
-console.log(notes);
-console.log(notes.length);
+const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Maldives'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise every other day with wife'
+}, {
+    title: 'Improve progamming skills on React',
+    body: 'Practice coding skills everyday'
+}];
+
+
+/*
 //  console.log(notes[0]);
 console.log(`pop: ${notes.pop()}`);
 notes.push('Note 4');
@@ -27,17 +37,9 @@ for(let count = 0; count <= notes.length; count++) {
     console.log(notes[count]);
     
 };
+*/
 
-// const numArray =  [2, 20, 24, 6, 8];
-//8624220
-// console.log(numArray[0].toString());
-
-// const test = numArray[0].toString() + numArray[1].toString();
-// console.log(test);
-
-// console.log(numArray.sort());
-// const numArray = [2, 20, 24, 6, 8];1
-
+/*
 const numArray = [4,21,14, 66, 18,9];
 
 numArray.sort(function(a,b){
@@ -48,4 +50,31 @@ numArray.sort(function(a,b){
     return parseInt(ab) > parseInt(ba) ? parseInt(ab) : parseInt(ba);
 });
 console.log(numArray.join(''));
+*/
+
+//Index of sample
+// console.log(notes.indexOf('Note 4'));
+
+// console.log(notes);
+// console.log(notes.length);
+// console.log(notes.indexOf({}));
+
+const index = notes.findIndex(function(note, index) {
+    console.log(note);
+    return note.title === 'Habbits to work on';
+    
+});
+
+console.log(index);
+
+// const findIndex = (notes, noteTitle) =>{
+//     const index = notes.findIndex((note)=> note.title.toLocaleLowerCase() === noteTitle.toLocaleLowerCase());
+//         return notes[index];
+// };
+
+const findIndex = (notes, noteTitle) =>{
+    return notes.find((note,index)=> note.title.toLocaleLowerCase() === noteTitle.toLocaleLowerCase());     
+};
+
+console.log(findIndex(notes,'HabBits to work on'));
 

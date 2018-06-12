@@ -1,5 +1,32 @@
-const todoList = ['walk Natalya', 'feed Natalya', 'laundry clothes', 'look for a Front-end job'];
+const todoList = [{
+    task: 'Walk Natalya',
+    completed: false
+},{
+    task: 'feed Natalya',
+    completed: true
+},{
+    task: 'Laundry clothes',
+    completed: true
+},{
+    task: 'Look for a new job',
+    completed: false
+}];
 
+const deleteTodo = (todos, findToDo)=>{
+    return (todos.splice(todos.findIndex((todo, index)=>todo.task.toLowerCase() === findToDo.toLowerCase()),1)
+        );
+
+}
+console.log(`Original todo list:`);
+console.log(todoList);
+
+console.log(deleteTodo(todoList,'feed Natalya'));
+console.log(`Updated to do list:`);
+console.log(todoList);
+
+
+/*
+// const todoList = ['walk Natalya', 'feed Natalya', 'laundry clothes', 'look for a Front-end job'];
 //remove third item from the list
 console.log(todoList.splice(2, 1));
 //remove first item from the list
@@ -46,5 +73,5 @@ const largestNum = (array, number) => {
 // largestNum([5,6,1,33,99,12,15,18],3);
 // [98,75,19,18,37,19,28]
 largestNum(num,3);
-
+*/
 
