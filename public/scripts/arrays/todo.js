@@ -6,7 +6,7 @@ const todoList = [{
     completed: true
 },{
     task: 'Laundry clothes',
-    completed: true
+    completed: false
 },{
     task: 'Look for a new job',
     completed: false
@@ -23,6 +23,10 @@ console.log('Deleted:', deleteTodo(todoList,'feed Natalya'));
 console.log(`Updated to do list:`);
 console.log(todoList);
 
+
+const filterToDo = (todos) => todos.filter((todos, index) => !todos.completed);
+console.log(`What to do:`);
+console.log(filterToDo(todoList));
 
 /*
 // const todoList = ['walk Natalya', 'feed Natalya', 'laundry clothes', 'look for a Front-end job'];

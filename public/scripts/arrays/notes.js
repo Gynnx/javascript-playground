@@ -76,5 +76,21 @@ const findIndex = (notes, noteTitle) =>{
     return notes.find((note,index)=> note.title.toLocaleLowerCase() === noteTitle.toLocaleLowerCase());     
 };
 
-console.log(findIndex(notes,'HabBits to work on'));
+//filter
+const findNote = (notes, text) => {
+   return notes.filter((notes,index)=>{
+        const filteredTitle = notes.title.toLowerCase().includes(text.toLowerCase());
+        const filteredBody = notes.body.toLowerCase().includes(text.toLowerCase());
+        return filteredTitle || filteredBody;
+    });
+
+    
+    
+};
+
+
+console.log(findNote(notes,'ne'));
+
+
+// console.log(findIndex(notes,'HabBits to work on'));
 
