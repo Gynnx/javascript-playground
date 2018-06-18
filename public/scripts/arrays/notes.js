@@ -7,7 +7,65 @@ const notes = [{
 }, {
     title: 'Improve progamming skills on React',
     body: 'Practice coding skills everyday'
+},{
+    title: 'What to do',
+    body: 'What to say'
 }];
+
+
+
+//Sort | start
+// console.log(notes);
+
+const sortNotes = (notes) => {
+    notes.sort(function (a,b){
+        if(a.title.toLowerCase() < b.title.toLowerCase()){
+            return -1;
+        } else if(b.title.toLowerCase() < a.title.toLowerCase()){
+            return 1;
+        }else{
+            return 0;
+        }
+    });
+};
+
+sortNotes(notes)
+console.log(notes);
+//Sort | end
+
+const index = notes.findIndex(function(note, index) {
+    console.log(note);
+    return note.title === 'Habbits to work on';
+    
+});
+
+// console.log(index);
+
+// const findIndex = (notes, noteTitle) =>{
+//     const index = notes.findIndex((note)=> note.title.toLocaleLowerCase() === noteTitle.toLocaleLowerCase());
+//         return notes[index];
+// };
+
+const findIndex = (notes, noteTitle) =>{
+    return notes.find((note,index)=> note.title.toLocaleLowerCase() === noteTitle.toLocaleLowerCase());     
+};
+
+//filter
+const findNote = (notes, text) => {
+   return notes.filter((notes,index)=>{
+        const filteredTitle = notes.title.toLowerCase().includes(text.toLowerCase());
+        const filteredBody = notes.body.toLowerCase().includes(text.toLowerCase());
+        return filteredTitle || filteredBody;
+    });
+
+};
+
+
+// console.log(findNote(notes,'ne'));
+
+
+// console.log(findIndex(notes,'HabBits to work on'));
+
 
 
 /*
@@ -58,39 +116,3 @@ console.log(numArray.join(''));
 // console.log(notes);
 // console.log(notes.length);
 // console.log(notes.indexOf({}));
-
-const index = notes.findIndex(function(note, index) {
-    console.log(note);
-    return note.title === 'Habbits to work on';
-    
-});
-
-console.log(index);
-
-// const findIndex = (notes, noteTitle) =>{
-//     const index = notes.findIndex((note)=> note.title.toLocaleLowerCase() === noteTitle.toLocaleLowerCase());
-//         return notes[index];
-// };
-
-const findIndex = (notes, noteTitle) =>{
-    return notes.find((note,index)=> note.title.toLocaleLowerCase() === noteTitle.toLocaleLowerCase());     
-};
-
-//filter
-const findNote = (notes, text) => {
-   return notes.filter((notes,index)=>{
-        const filteredTitle = notes.title.toLowerCase().includes(text.toLowerCase());
-        const filteredBody = notes.body.toLowerCase().includes(text.toLowerCase());
-        return filteredTitle || filteredBody;
-    });
-
-    
-    
-};
-
-
-console.log(findNote(notes,'ne'));
-
-
-// console.log(findIndex(notes,'HabBits to work on'));
-

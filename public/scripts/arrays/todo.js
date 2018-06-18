@@ -12,6 +12,21 @@ const todoList = [{
     completed: false
 }];
 
+//sort | start
+const sortTodo = (todos) => {
+    todos.sort((a,b)=>{
+        if(!a.completed && b.completed){
+            return -1
+        }else if(!b.completed && a.completed ){
+            return 1
+        };
+    });
+};
+sortTodo(todoList);
+console.log(todoList);
+
+//sort | end
+
 const deleteTodo = (todos, findToDo)=>{
     const index = todos.findIndex((todo)=>todo.task.toLowerCase() === findToDo.toLowerCase());
     return index > -1 ? todos.splice(index,1): 'task not found in todo list';
