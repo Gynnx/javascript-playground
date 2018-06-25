@@ -15,17 +15,27 @@ const todos = [{
     completed: true
 }];
 
-const filters = {searchFilter: ''};
+const filters = {
+    searchText: ''
+};
 
-const renderTodos = (todos, filterText) => {
-    const filteredTodo = todos.filter((todo) => {
-        return todo.text.toLowerCase().includes(filterText.searchFilter.toLowerCase());
+const renderTodos = (todos, filters) => {
+    const filteredText = todos.filter((todo)=>{
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
     });
-    // console.log(filteredTodo);
+
+    const incompleteTask = filteredText.filter(todo => !todo.completed);
 
     document.querySelector('#todo').innerHTML = '';
 
-    filteredTodo.forEach((todo) => {
+    const summary = document.createElement('h2');
+    summary.textContent = `You have ${incompleteTask.length} tasks left`;
+    document.querySelector('#todo').appendChild(summary);
+    
+    
+    // console.log(filteredText);
+
+    filteredText.forEach((todo)=>{
         const todoEl = document.createElement('p');
         todoEl.textContent = todo.text;
         document.querySelector('#todo').appendChild(todoEl);
@@ -35,10 +45,17 @@ const renderTodos = (todos, filterText) => {
 
 renderTodos(todos,filters);
 
-document.querySelector('#new-todo').addEventListener('input',(e)=>{
+// document.querySelector('#new-todo').addEventListener('input',(e)=>{
+//     // console.log(e.target.value);
+//     filters.searchFilter = e.target.value;
+    
+// });
+
+document.querySelector('#search-text').addEventListener('input',(e)=>{
     // console.log(e.target.value);
-    filters.searchFilter = e.target.value;
+    filters.searchText = e.target.value
     renderTodos(todos,filters);
+
     
 });
 
@@ -46,14 +63,6 @@ document.querySelector('#add-todo').addEventListener('click',(e) => {
     console.log('add things to do');
     
 });
-
-const incompleteTodos = todos.filter(function (todo) {
-    return !todo.completed;
-});
-
-const summary = document.createElement('h2');
-summary.textContent = `You have ${incompleteTodos.length} todos left`;
-document.querySelector('#header').appendChild(summary);
 
 // todos.forEach(function (todo) {
 //     const p = document.createElement('p')
