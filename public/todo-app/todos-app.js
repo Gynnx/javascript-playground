@@ -43,8 +43,8 @@ const renderTodos = (todos, filters) => {
     
 };
 
-renderTodos(todos,filters);
 
+renderTodos(todos,filters);
 // document.querySelector('#new-todo').addEventListener('input',(e)=>{
 //     // console.log(e.target.value);
 //     filters.searchFilter = e.target.value;
@@ -59,10 +59,26 @@ document.querySelector('#search-text').addEventListener('input',(e)=>{
     
 });
 
-document.querySelector('#add-todo').addEventListener('click',(e) => {
-    console.log('add things to do');
+document.querySelector('#add-task').addEventListener('submit', (e) => {
+    console.log(e.target.elements.addTask.value);
+    e.preventDefault();
+   
+    todos.push({
+        text: e.target.elements.addTask.value,
+        completed: false
+    });
+    e.target.elements.addTask.value = ''
+    // console.log(additonalTask);
+    // console.log(todos);
+    renderTodos(todos,filters);
     
 });
+
+
+// document.querySelector('#add-todo').addEventListener('click',(e) => {
+//     console.log('add things to do');
+    
+// });
 
 // todos.forEach(function (todo) {
 //     const p = document.createElement('p')

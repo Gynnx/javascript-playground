@@ -20,7 +20,7 @@ const renderNotes = (notes, filters) => {
 
     document.querySelector('#note').innerHTML = '';
     
-    filteredNotes.forEach((note)=> {
+    filteredNotes.forEach((note) => {
         const noteEl = document.createElement('p');
         noteEl.textContent = note.title;
         document.querySelector('#note').appendChild(noteEl);
@@ -50,19 +50,23 @@ renderNotes(notes,filters);
 // const newParagraph = document.createElement('p')
 // newParagraph.textContent = 'This is a new element from JavaScript'
 // document.querySelector('body').appendChild(newParagraph)
-
-document.querySelector('#create-note').addEventListener('click',(e) => {
-    console.log('Create Note');
     
-});
-document.querySelector('#remove-note').addEventListener('click', (e) => {
-        console.log('Remove note');
-        document.querySelectorAll('.note').forEach((note)=>note.remove());
-    });
+// document.querySelector('#remove-note').addEventListener('click', (e) => {
+//         console.log('Remove note');
+//         document.querySelectorAll('.note').forEach((note)=>note.remove());
+//     });
 
 document.querySelector('#note-input').addEventListener('input',(e)=>{
     // console.log(e.target.value);
     filters.searchText = e.target.value;
     renderNotes(notes,filters);
+    
+});
+
+
+document.querySelector('#name-form').addEventListener('submit',(e) => {
+    e.preventDefault();
+    console.log(e.target.elements.firstName.value);
+    e.target.elements.firstName.value = '';
     
 });
