@@ -1,17 +1,36 @@
-const notes = [{
-    title: 'my next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}]
+let notes = [];
+
+const notesJSON = localStorage.getItem('notes');
+if(notesJSON){
+    notes = JSON.parse(notesJSON);
+}
+
 
 const filters = {
     searchText: ''
 };
+
+//CRUD - Create, Read, Update and Delete ( Data Storage Mechanism)
+// localStorage.setItem('location','Philippines');
+// console.log(localStorage.getItem('location'));
+// localStorage.removeItem('location');
+
+// const user = {
+//     name: 'Cyngynn',
+//     age: 33
+// };
+
+// const userJson = JSON.stringify(user);
+
+// console.log(userJson);
+// localStorage.setItem('user', userJson);
+
+// const userJSON = localStorage.getItem('user');
+// const user = JSON.parse(userJSON);
+
+// console.log(`${user.name} is ${user.age} years old`);
+
+
 
 const renderNotes = (notes, filters) => {
     const filteredNotes = notes.filter((note)=>{
@@ -22,7 +41,13 @@ const renderNotes = (notes, filters) => {
     
     filteredNotes.forEach((note) => {
         const noteEl = document.createElement('p');
-        noteEl.textContent = note.title;
+
+        if(note.title.length > 0){
+            noteEl.textContent = note.title;
+        } else {
+            noteEl.textContent = 'Unknown title'
+        };
+        
         document.querySelector('#note').appendChild(noteEl);
         
     });
@@ -63,6 +88,15 @@ document.querySelector('#note-input').addEventListener('input',(e)=>{
     
 });
 
+document.querySelector('#create-note').addEventListener('click', (e) => {
+    notes.push({
+        title: '',
+        completed: ''
+    });
+    localStorage.setItem('notes',JSON.stringify(notes));
+    renderNotes(notes,filters);    
+});
+
 
 document.querySelector('#name-form').addEventListener('submit',(e) => {
     e.preventDefault();
@@ -70,3 +104,8 @@ document.querySelector('#name-form').addEventListener('submit',(e) => {
     e.target.elements.firstName.value = '';
     
 });
+
+document.querySelector('#filter-by').addEventListener('change', (e) => {
+    console.log(e.target.value);
+    });
+
